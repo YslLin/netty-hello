@@ -30,6 +30,7 @@ public class WSServerInitializter extends ChannelInitializer<SocketChannel> {
          */
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
 
+        // 聊天助手类
         pipeline.addLast(new ChatHandler());
     }
 }

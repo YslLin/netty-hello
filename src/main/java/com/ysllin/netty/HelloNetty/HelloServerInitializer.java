@@ -1,4 +1,4 @@
-package com.ysllin.netty;
+package com.ysllin.netty.HelloNetty;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -21,6 +21,6 @@ public class HelloServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("HttpServerCodec", new HttpServerCodec());
 
         // 添加自定义助手类，返回 “hello netty~”
-        pipeline.addLast("customHandler", new HelloCustomHandler());
+        pipeline.addLast("customHandler", new CustomHandler());
     }
 }

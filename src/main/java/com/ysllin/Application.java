@@ -1,4 +1,4 @@
-package com.ysllin.netty;
+package com.ysllin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

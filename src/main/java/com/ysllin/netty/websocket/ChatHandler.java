@@ -15,8 +15,16 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
     private static ChannelGroup clients =
             new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
+    /**
+     * 每当从客户端接收到新数据时，就用接收到的消息调用此方法。
+     *
+     * @param channelHandlerContext
+     * @param textWebSocketFrame
+     * @throws Exception
+     */
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, TextWebSocketFrame textWebSocketFrame) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, TextWebSocketFrame textWebSocketFrame)
+            throws Exception {
         String content = textWebSocketFrame.text();
         System.out.println("接受到的数据：" + content);
 
@@ -41,7 +49,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("客户端打开连接，channel 长 id 为：" + ctx.channel().id().asLongText() + "；端 id 为：" + ctx.channel().id().asShortText());
+        System.out.println("客户端打开连接，channel 长 id 为：" + ctx.channel().id().asLongText()
+                + "；端 id 为：" + ctx.channel().id().asShortText());
         clients.add(ctx.channel());
     }
 
@@ -52,6 +61,14 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
 //        clients.remove(ctx.channel()); // 触发 handlerRemoved 的客户端会自动从 ChannelGroup 中移除
-        System.out.println("客户端断开，channel 长 id 为：" + ctx.channel().id().asLongText() + "；端 id 为：" + ctx.channel().id().asShortText());
+        System.out.println("客户端断开，channel 长 id 为：" + ctx.channel().id().asLongText()
+                + "；端 id 为：" + ctx.channel().id().asShortText());
     }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.ysllin.netty;
+package com.ysllin.netty.HelloNetty;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -12,7 +12,7 @@ import io.netty.util.CharsetUtil;
  * @Description: 自定义助手类
  */
 // SimpleChannelInboundHandler 对于请求来讲，相当于【入站，入境】
-public class HelloCustomHandler extends SimpleChannelInboundHandler<HttpObject> {
+public class CustomHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, HttpObject httpObject) throws Exception {
         // 获取 channel

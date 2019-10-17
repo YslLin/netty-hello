@@ -1,4 +1,4 @@
-package com.ysllin.netty;
+package com.ysllin.netty.HelloNetty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -15,7 +15,7 @@ public class HelloServer {
         // 定义一对线程组
         // 主线程组，用于接受客户端的连接，但不做任何处理
         EventLoopGroup bossGroup = new NioEventLoopGroup();
-        // 丛线程组，负责处理连接的任务
+        // 从线程组，负责处理连接的任务
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
